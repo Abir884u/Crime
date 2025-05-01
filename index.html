@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crime Solution</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #001f3f;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+    }
+
+    .logo img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .site-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      font-family: Georgia, serif;
+      position: relative;
+      margin-left: 5px;
+      text-shadow:
+        -1px -1px 0 #00ffff,
+         1px -1px 0 #00ffff,
+        -1px  1px 0 #00ffff,
+         1px  1px 0 #00ffff;
+    }
+
+    .site-name .tagline {
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      font-style: italic;
+      color: #00ffff;
+      font-size: 0.8rem;
+      text-shadow: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      position: relative;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      background-color: #001f3f;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .dropdown,
+    .dropdown-station {
+      position: relative;
+    }
+
+    .dropdown-content,
+    .dropdown-station-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background-color: #004d4d;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .dropdown-content a,
+    .dropdown-station-content a {
+      display: block;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown-station:hover .dropdown-station-content {
+      display: block;
+    }
+
+    .dropdown:nth-last-of-type(2) .dropdown-btn,
+    .dropdown:last-of-type .dropdown-btn {
+      background-color: cyan;
+      color: black;
+      font-weight: bold;
+      border: 1px solid white;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown:nth-last-of-type(2) .dropdown-btn:hover,
+    .dropdown:last-of-type .dropdown-btn:hover {
+      background-color: #00bebe;
+    }
+
+    .dropdown-btn {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-station .dropdown-btn {
+      background-color: #001f3f;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      padding: 2rem;
+      background-color: #000;
+    }
+
+    .image-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 45vh;
+      margin-bottom: 2rem;
+    }
+
+    .image-box {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 10px;
+      background-color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .text-section {
+      height: 45vh;
+      padding: 1rem;
+      margin: 0 1rem 2rem 1rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .notice {
+      height: 10vh;
+      margin: 0 1rem 2rem 1rem;
+      padding: 1rem;
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer {
+      background-color: #001f3f;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="Logo.png" alt="Crime Solution Logo" />
+    </div>
+    <div class="site-name">
+      Crime Solution
+      <div class="tagline">Write Fearlessly</div>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <div class="dropdown-station">
+        <button class="dropdown-btn">Police Station</button>
+        <div class="dropdown-station-content">
+          <a href="#">Dhaka</a>
+          <a href="#">Barishal</a>
+          <a href="#">Chattogram</a>
+          <a href="#">Khulna</a>
+          <a href="#">Rajshahi</a>
+          <a href="#">Rangpur</a>
+          <a href="#">Mymensingh</a>
+          <a href="#">Sylhet</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-btn">Login</button>
+        <div class="dropdown-content">
+          <a href="User_login.html">User Login</a>
+          <a href="police_login.html">Police Login</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-btn">Sign Up</button>
+        <div class="dropdown-content">
+          <a href="User_Signup.html">User Sign Up</a>
+          <a href="Polie_Signup.html">Police Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="image-section">
+      <div class="image-box">
+        <img src="HomeL1.png" alt="Crime Image 1" />
+      </div>
+      <div class="image-box">
+        <img src="HomeL2.png" alt="Crime Image 2" />
+      </div>
+      <div class="image-box">
+        <img src="Homel3.png" alt="Crime Image 3" />
+      </div>
+    </div>
+
+    <div class="text-section">
+      <h2>Welcome to Crime Solution</h2>
+      <p>Crime and law are integral parts of any society, functioning to maintain order and protect individuals.
+
+Crime refers to actions that break the law, such as theft, assault, or fraud. Laws are put in place by governments to define what is considered illegal, set penalties for those who break them, and ensure justice is served. The criminal justice system, which includes law enforcement, the courts, and correctional institutions, is designed to enforce these laws and deal with those who commit crimes.
+
+There are various types of crimes, from serious ones like murder and robbery to less severe offenses like vandalism or public intoxication. Some crimes are classified as felonies, which carry heavier penalties, while others are misdemeanors, which usually result in lesser sentences. Infractions, such as traffic violations, are the least serious and typically lead to fines rather than criminal charges.
+</p>
+    </div>
+
+    <div class="notice">
+      ⚠️ You will be held accountable for any kind of misinformation and complaints, otherwise appropriate action will be taken.
+    </div>
+  </main>
+
+  <footer>
+    <p>About: This website aims to help citizens report crimes efficiently.</p>
+    <p>&copy; 2025 Crime Solution. All rights reserved.</p>
+  </footer>
+</body>
+</html>

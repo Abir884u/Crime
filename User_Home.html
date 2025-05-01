@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crime Solution - Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #001f3f;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+    }
+
+    .logo img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .site-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      font-family: Georgia, serif;
+      position: relative;
+      margin-left: 5px;
+      text-shadow:
+        -1px -1px 0 #00ffff,
+         1px -1px 0 #00ffff,
+        -1px  1px 0 #00ffff,
+         1px  1px 0 #00ffff;
+    }
+
+    .site-name .tagline {
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      font-style: italic;
+      color: #00ffff;
+      font-size: 0.8rem;
+      text-shadow: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    nav a.logout-btn {
+      background-color: #00ffff;
+      color: #001f3f;
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .action-buttons a {
+      padding: 1rem 2rem;
+      background-color: #004d4d;
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .action-buttons a:hover {
+      background-color: #00bebe;
+    }
+
+    .complaint-form {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: white;
+    }
+
+    .complaint-form h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .complaint-form label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+
+    .complaint-form select,
+    .complaint-form input,
+    .complaint-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .complaint-form textarea {
+      resize: vertical;
+    }
+
+    .complaint-form button {
+      display: block;
+      margin: 2rem auto 0 auto;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: #00bebe;
+      color: #001f3f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .complaint-form button:hover {
+      background-color: #00ffff;
+    }
+
+    footer {
+      background-color: #001f3f;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="D:\Project\CrimeSite\Logo.png" alt="Crime Solution Logo" />
+    </div>
+    <div class="site-name">
+      Crime Solution
+      <div class="tagline">Write Fearlessly</div>
+    </div>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Police Station</a>
+      <a href="index.html" class="logout-btn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="action-buttons">
+      <a href="recent_posts.html">Recent Post</a>
+      <a href="police_alert.html">Police Alert</a>
+    </div>
+
+    <div class="complaint-form">
+      <h2>Complaint Box</h2>
+      <form action="/submit-complaint" method="POST">
+        <label for="crimeType">Crime Type</label>
+        <select id="crimeType" name="crimeType" required>
+          <option value="">--Select--</option>
+          <option value="Sexual Harassment">Sexual Harassment</option>
+          <option value="Robbery">Robbery</option>
+          <option value="Murder">Murder</option>
+          <option value="Ragging">Ragging</option>
+          <option value="Missing">Missing</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="date">Date of Crime</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="location">Crime Location</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="evidence">Evidence (if any)</label>
+        <input type="file" id="evidence" name="evidence">
+
+        <button type="submit">Submit Complaint</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Crime Solution. All rights reserved.</p>
+  </footer>
+</body>
+</html>
